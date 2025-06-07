@@ -1,0 +1,209 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    
+}
+html,body {
+  height: 100%;
+    width: 100%;
+  overflow-x: hidden;
+}
+.content-wrapper {
+  background-color: #F4C2C2;
+  position: relative; /* Needed for absolute children */
+  z-index: 1;
+  overflow: hidden;   /* Prevents canvas overflow */
+}
+.fav-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;      
+  padding-top: 40px;      
+  color: #a61e4d;
+  text-align: center;
+  align-items: center;
+}
+
+.main-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 40px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 55px;
+  align-items: stretch;
+}
+
+
+.main-box {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 25px;
+  width: calc(33.33% - 37px);
+  height: 800px;
+  min-width: 300px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative; /* Add this */
+  z-index: 1;
+}
+.main-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+.main-box h2 {
+  color: #c9184a;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.inner-boxes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  gap: 20px;
+}
+
+
+.inner-box {
+  background-color: #fcbacb;
+  border-radius: 15px;
+  padding: 21px;
+  flex: 1;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  text-align: center;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 200px;
+  cursor: pointer;
+
+}
+.inner-box:hover {
+  transform: scale(1.40);
+  background-color: #f098b8;
+}
+
+.inner-box:hover,
+.main-box:hover {
+  cursor: pointer;
+}
+.box-title {
+  font-weight: 600;
+  color: #a61e4d;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+.box-image {
+  max-width: 100%;
+  max-height: 80px;
+  object-fit: contain;
+  margin: 0 auto;
+}
+.box-note {
+  font-family: 'Playfair Display', serif;
+  color: #772953;
+  font-size: 0.55rem;
+  margin-top: 8px;
+}
+.inner-box p:first-child {
+  font-weight: 600;
+  color: #a61e4d;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.inner-box p:last-child {
+  color: #772953;
+  font-size: 1rem;
+  margin: 0;
+}
+
+
+.heart-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#heart-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: block;
+}
+/*  
+#heart-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0; /* Put it behind the boxes, but above background 
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+#heart-canvas {
+  filter: blur(0.6px);
+  opacity: 0.9;
+}*/
+@media (max-width: 1024px) {
+  .main-box {
+    width: 100%;
+    height: auto;
+  }
+
+  .inner-box {
+    height: auto;
+  }
+} 
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #c9184a;
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(0.5);
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  animation-delay: 2s; /* Change this to control how long before it appears */
+  z-index: 9999;
+}
+.floating-button:hover {
+  background-color: #a61e4d;
+  transform: scale(1.1);
+}

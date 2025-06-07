@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+    <canvas id="heart-canvas"></canvas>
+
+<h1 class="top-heading">Guess Who Inspired This? 💌</h1>
+<div class="center-content">
+<p>
+  Someone with a beautiful smile which makes my each day better...  
+  <br>Someone who texts me daily and shares her day with me.
+  <br>Someone who loves chocolates, likes to dance .Someone who loves dogs.
+  <br>I hope this little page shows you just how special you are to me.
+</p>
+
+<button onclick="startReveal()">GUESS WHOOOOO?</button>
+
+<div id="reveal"></div>
+<div id="final-message" >
+  <h2>Hope this made you smile... Hehehe</h2>
+</div>
+</div>
+<button id="nextButton" style="display:none;" onclick="goToFavorites()">Next →</button>
+
+
+<button id="audioButton" onclick="toggleAudio()">Play Music 🎵</button>
+<audio id="bgMusic" loop>
+  <source src="./audio/Hona Tha Pyar From Bol-320kbps.mp3" type="audio/mp3">
+</audio>
+
+<script>
+  // Typewriter reveal
+  const revealText = "Of Courseeeee \n It’s youuuuuuu.💖\n"+
+  "The one whose smile makes everything feel right.";
+  let i = 0;
+
+  function startReveal() {
+    const revealDiv = document.getElementById("reveal");
+    const messageDiv = document.getElementById("final-message");
+    const nextBtn = document.getElementById("nextButton");
+    revealDiv.style.display = "block";
+    revealDiv.textContent = "";
+    i = 0;
+    typeWriter(revealText, revealDiv, () => {
+        messageDiv.style.display = "block";
+        messageDiv.style.opacity = 0;
+  messageDiv.style.animation = "none";
+  void messageDiv.offsetWidth;
+  messageDiv.style.animation = "fadeInFinal 2s ease-in-out forwards";
+
+   // Show next button with fade-in
+    nextBtn.style.display = "inline-block";
+    nextBtn.style.opacity = 0;
+    nextBtn.style.transition = "opacity 1.5s ease";
+    setTimeout(() => {
+      nextBtn.style.opacity = 1;
+    }, 100);
+    });
+  }
+
+  function typeWriter(text,element,callback) {
+    if (i < revealText.length) {
+        element.textContent += text.charAt(i);
+        i++;
+        setTimeout(() => typeWriter(text,element,callback),60);
+    }else if (callback) {
+      setTimeout(callback, 500);
+    }
+  }
+
+  // Music toggle
+  const music = document.getElementById("bgMusic");
+  const audioButton = document.getElementById("audioButton");
+  let isPlaying = false;
+
+  function toggleAudio() {
+    if (isPlaying) {
+      music.pause();
+      audioButton.textContent = "Play Music 🎵";
+    } else {
+      music.play();
+      audioButton.textContent = "Pause Music ⏸️";
+    }
+    isPlaying = !isPlaying;
+  }
+
+  // Heart particles
+  const canvas = document.getElementById('heart-canvas');
+  const ctx = canvas.getContext('2d');
+  let hearts = [];
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  function createHeart() {
+    return {
+      x: Math.random() * canvas.width,
+      y: canvas.height + 20,
+      size: Math.random() * 20 + 10,
+      speed: Math.random() * 1 + 0.5,
+      alpha: Math.random() * 0.5 + 0.5
+    };
+  }
+
+  function drawHeart(heart) {
+    ctx.beginPath();
+    ctx.globalAlpha = heart.alpha;
+    ctx.fillStyle = '#ff6f91';
+    ctx.moveTo(heart.x, heart.y);
+    ctx.bezierCurveTo(heart.x - heart.size / 2, heart.y - heart.size / 2,
+                      heart.x - heart.size, heart.y + heart.size / 3,
+                      heart.x, heart.y + heart.size);
+    ctx.bezierCurveTo(heart.x + heart.size, heart.y + heart.size / 3,
+                      heart.x + heart.size / 2, heart.y - heart.size / 2,
+                      heart.x, heart.y);
+    ctx.fill();
+  }
+
+  function animateHearts() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (hearts.length < 100) {
+      hearts.push(createHeart());
+    }
+
+    hearts.forEach((heart, index) => {
+      heart.y -= heart.speed;
+      drawHeart(heart);
+      if (heart.y + heart.size < 0) {
+        hearts.splice(index, 1);
+      }
+    });
+
+    requestAnimationFrame(animateHearts);
+  }
+
+  animateHearts();
+
+  nextBtn.style.display = "inline-block";
+setTimeout(() => {
+  nextBtn.style.opacity = 1;
+}, 100);
+
+
+  function goToFavorites() {
+  // Replace this URL with your actual favorites page URL
+  window.location.href = "favorites.html";
+}
+</script>
+
+
+</body>
+</html>

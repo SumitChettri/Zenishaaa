@@ -1,0 +1,327 @@
+ body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  font-family: 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+  height: 100vh;
+  position: relative;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./zenishaaa/zen.jpeg');
+  background-size: cover;
+  background-position: center;
+  z-index: -3;
+}
+
+.background-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.82); /* darkness level: 0.3–0.6 is usually good */
+  z-index: -2;
+}
+
+
+    h2#game-title {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 4rem;
+      color: #bfa672;
+      font-family: 'Playfair Display', serif ;
+    }
+
+    /* Stars container */
+#stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Each star */
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: fall 6s linear infinite,twinkle 2s ease-in-out infinite;
+}
+
+/* Twinkle animation */
+@keyframes fall{
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+    #intro-messages {
+      text-align: center;
+      margin-top: 60px;
+      padding: 40px 20px;
+      font-family: 'Playfair Display', serif ;
+      color: antiquewhite;
+    }
+
+    #intro-messages .message {
+      display: none;
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    @keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.message {
+  display: none;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+}
+
+  .start-btn {
+  display: none;
+  opacity: 0;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #F4C2C2;
+  color: rgb(4, 47, 62);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.8s ease;
+}
+
+.start-btn.show {
+  display: inline-block;
+  opacity: 1;
+}
+.start-btn:hover {
+  transform: scale(1.05);
+  background-color: rgb(255, 207, 224);
+  border: 3px solid hsl(338, 75%, 77%) ;
+  box-shadow: 0 0 10px rgba(108, 92, 231, 0.6);
+}
+
+
+    .memory-title, .question-card {
+      display: none;
+    }
+
+    .memory-title {
+  color: #F4C2C2; /* Soft pink - you can change this */
+  font-size: 2.5rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+  .question-card {
+  background: #F4C2C2;; /* Transparent background */
+  border-radius: 20px;
+  padding: 2rem;
+  margin: 2rem auto;
+  width: 80%;
+  max-width: 600px;
+  backdrop-filter: blur(10px); /* Blur the background behind */
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2), 
+              0 0 40px rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: rgb(5, 5, 42);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.question-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3),
+              0 0 60px rgba(255, 255, 255, 0.2);
+}
+
+/* Fade transition for question card */
+.fade-out {
+  animation: fadeOut 0.5s ease forwards;
+}
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(20px); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+    .question-text {
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+      font-family: 'Playfair Display', serif ;
+      text-align: center;
+    }
+
+    .option-btn {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      background: #c64263;
+      border: 2px solid whitesmoke;
+      border-radius: 10px;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .option-btn:hover {
+      background: #ff84a3;
+    }
+
+    .feedback.correct {
+      color: #2a064c;
+      margin-top: 10px;
+    }
+
+    .feedback.wrong {
+      color: #1e0850;
+      margin-top: 10px;
+    }
+
+    .reflection-title {
+  font-size: 1.5rem;
+  color: #5f0d45;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.reflection-block {
+  margin-bottom: 1.5rem;
+}
+
+.reflection-question {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #190b4a;
+}
+
+.reflection-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #2d073a;
+  resize: vertical;
+  min-height: 80px;
+  backdrop-filter: blur(6px);
+  font-family: inherit;
+}
+
+.submit-reflection {
+  background-color: #ff98d4;
+  color: #2c003e;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transition: background-color 0.3s ease;
+}
+
+.submit-reflection:hover {
+  background-color: #ffb5dd;
+}
+
+.reflection-block textarea:focus {
+  outline: none;
+  box-shadow: 0 0 8px #ff99cc;
+}
+.next-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opaacity 0.6s ease, visibility 0.6s ease;
+  z-index: 1000;
+}
+
+.next-container.show {
+  opacity: 1;
+  visibility: visible;
+  animation: fadeInNext 1s ease forwards;
+}
+
+.next-btn {
+  padding: 12px 20px;
+  font-size: 1rem;
+  background-color: #ff66b2;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.next-btn:hover {
+  transform: scale(1.1);
+}
+#next-section {
+  display: none;
+  text-align: center;
+  margin-top: 20px;
+}
+
+#next-section.show {
+  display: block;
+}
+@keyframes fadeInNext {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.next-container.show {
+  display: block;
+  animation: fadeInNext 1s ease forwards;
+}
+.next-container.show .next-btn {
+  animation: bounceIn 0.8s ease forwards;
+}
+
+@keyframes bounceIn {
+  0% { transform: translateY(30px); opacity: 0; }
+  60% { transform: translateY(-10px); opacity: 1; }
+  80% { transform: translateY(5px); }
+  100% { transform: translateY(0); }
+}

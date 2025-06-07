@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For You</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Quicksand&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <section class="header">
+    <div class="overlay"></div>
+    <div class="text-box">
+      <h1>For You</h1>
+      <p>
+        I don’t know where to begin,<br/>
+         So this is my way of turning my thoughts and emotions.<br/>
+        A little journey of my thoughts, just for you.
+      </p>
+      <a href="start.html" class="hero-btn">Let’s Begin</a>
+    </div>
+      <div class="polaroid-frame" style="top: 40%; left: 20%;">
+  <img src="zenishaaa/zen11.jpeg" alt="Memory 1">
+</div>
+<div class="polaroid-frame" style="top: 60%; left: 85%;">
+  <img src="zenishaaa/zen14.jpeg" alt="Memory 2">
+</div>
+<div class="polaroid-frame" style="top: 13%; left: 6%; transform: rotate(-5deg); animation-delay: 0s;">
+  <img src="zenishaaa/zen4.jpeg" alt="Memory 1" />
+</div>
+<div class="polaroid-frame" style="top: 10%; left: 85%; transform: rotate(3deg); animation-delay: 2s;">
+  <img src="zenishaaa/zen7.jpeg" alt="Memory 2" />
+</div>
+<div class="polaroid-frame" style="top: 30%; left: 70%; transform: rotate(-8deg); animation-delay: 4s;">
+  <img src="zenishaaa/zen8.jpeg" alt="Memory 3" />
+</div>
+<div class="polaroid-frame" style="top: 60%; left: 6%; transform: rotate(6deg); animation-delay: 1s;">
+  <img src="zenishaaa/zen6.jpeg" alt="Memory 4" />
+</div>
+  </section>
+  <script>
+  for (let i = 0; i < 30; i++) {
+    const petal = document.createElement('div');
+    petal.className = 'sakura';
+    petal.style.left = Math.random() * 100 + 'vw';
+    petal.style.animationDuration = (5 + Math.random() * 5) + 's';
+    petal.style.opacity = Math.random();
+    document.body.appendChild(petal);
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style3.css">
+   
+</head>
+<body>
+<div class="content-wrapper">
+  <div class="heart-background">
+  <canvas id="heart-canvas"></canvas>
+  </div>
+
+   <h2 class="fav-heading">FEW THINGS ABOUT YOU</h2>
+ <div class="main-container">
+
+  <div class="main-box">
+    <h2>Imp for Me</h2>
+    <div class="inner-boxes">
+      <div class="inner-box">
+        <p class="box-title">First Message</p>
+        <img src="./imp/first msg.jpeg" alt="" class="box-image">
+        <p class="box-note">4th March</p>
+      </div>
+      <div class="inner-box">
+        <p class="box-title">Birthday</p>
+        <img src="./imp/birthday-pic.jpeg" alt="" class="box-image">
+        <p class="box-note">7 Aug</p>
+      </div>
+            <div class="inner-box">
+        <p class="box-title">First Meet</p>
+        <img src="./imp/first-meet.jpeg" alt="" class="box-image">
+        <p class="box-note">May 29</p>
+      </div>
+            <div class="inner-box">
+        <p class="box-title">First Date</p>
+        <img src="./imp/first-date.jpeg" alt="" class="box-image">
+        <p class="box-note">Kayaking</p>
+      </div>
+            <div class="inner-box">
+        <p class="box-title">Nickname</p>
+        <img src="./zenishaaa/zen4.jpeg" alt="" class="box-image">
+        <p class="box-note">Zennyyyyy💖</p>
+      </div>
+            <div class="inner-box">
+        <p class="box-title">Bby pic</p>
+        <img src="./imp/baby-pic.jpeg" alt="" class="box-image">
+        <p class="box-note">Cutieeeee</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-box">
+    <h2>Favorites</h2>
+    <div class="inner-boxes">
+      <div class="inner-box">
+        <p class="box-title">Flower</p>
+        <img src="./fav/rose.jpg" alt="" class="box-image">
+        <p class="box-note">Pink Roses</p>
+      </div>
+      <div class="inner-box">
+        <p class="box-title">Hobby</p>
+        <img src="./fav/makeup.jpg" alt="" class="box-image">
+        <p class="box-note">Makeup</p>
+      </div>
+      <div class="inner-box">
+        <p class="box-title">Chocolate</p>
+        <img src="./fav/CADBURY DAIRY MILK SILK OREO 60G.png" alt="" class="box-image">
+        <p class="box-note">Dairymilk Oreo</p>
+      </div>
+      <div class="inner-box">
+        <p class="box-title">Food</p>
+        <img src="./fav/pizza.jpg" alt="" class="box-image">
+        <p class="box-note">Pizza</p>
+      </div>
+      <div class="inner-box">
+        <p class="box-title">Season</p>
+        <img src="./fav/winter.jpg" alt="" class="box-image">
+        <p class="box-note">Winter</p>
+      </div>
+      <div class="inner-box">
+        <p class="box-title">Player</p>
+        <img src="./fav/cr7.jpg" alt="" class="box-image">
+        <p class="box-note">CR7</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-box">
+    <h2>Things she loves 💕</h2>
+    <div class="inner-boxes">
+      <div class="inner-box">
+        <p class="box-title">Family</p>
+        <img src="./loves/her family.jpeg" alt="" class="box-image">
+        <p class="box-note"> More than Anythinggg</p>
+      </div>
+      <div class="inner-box">
+        <p class="box-title">Mukuu</p>
+        <img src="./loves/muku.jpeg" alt="" class="box-image">
+        <p class="box-note">Ray of Sunshine</p>
+      </div>
+      <div class="inner-box">
+        <p class="box-title">Herself</p>
+        <img src="./zenishaaa/zen3.jpeg" alt="" class="box-image">
+        <p class="box-note">Minne Favouriteeeeee</p>
+      </div>
+      <div class="inner-box">
+        <p class="box-title">Weather</p>
+        <img src="./loves/rainy.jpg" alt="" class="box-image">
+        <p class="box-note">Rainy</p>
+      </div>
+      <div class="inner-box">
+        <p class="box-title">Jhumka</p>
+        <img src="./loves/jhumka.jpeg" alt="" class="box-image">
+        <p class="box-note">Crystal Types</p>
+      </div>
+      <div class="inner-box">
+        <p class="box-title">Hangout Spot</p>
+        <img src="./loves/lakeside.jpg" alt="" class="box-image">
+        <p class="box-note">Lakeside</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+  const canvas = document.getElementById('heart-canvas');
+  const ctx = canvas.getContext('2d');
+  let hearts = [];
+
+  function resizeCanvas() {
+   const container = document.querySelector('.heart-background');
+  canvas.width = container.clientWidth;
+  canvas.height = container.clientHeight;
+  }
+
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  function createHeart() {
+    return {
+      x: Math.random() * canvas.width,
+      y: canvas.height + 20,
+      size: Math.random() * 20 + 10,
+      speed: Math.random() * 1 + 0.5,
+      alpha: Math.random() * 0.5 + 0.5
+    };
+  }
+
+  function drawHeart(heart) {
+    ctx.beginPath();
+    ctx.globalAlpha = heart.alpha;
+    ctx.fillStyle = '#ff6f91';
+    ctx.moveTo(heart.x, heart.y);
+    ctx.bezierCurveTo(
+      heart.x - heart.size / 2, heart.y - heart.size / 2,
+      heart.x - heart.size, heart.y + heart.size / 3,
+      heart.x, heart.y + heart.size
+    );
+    ctx.bezierCurveTo(
+      heart.x + heart.size, heart.y + heart.size / 3,
+      heart.x + heart.size / 2, heart.y - heart.size / 2,
+      heart.x, heart.y
+    );
+    ctx.fill();
+  }
+
+  function animateHearts() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (hearts.length < 100) {
+      hearts.push(createHeart());
+    }
+
+    hearts.forEach((heart, index) => {
+      heart.y -= heart.speed;
+      drawHeart(heart);
+      if (heart.y + heart.size < 0) {
+        hearts.splice(index, 1);
+      }
+    });
+
+    requestAnimationFrame(animateHearts);
+  }
+
+  animateHearts();
+</script>
+
+<a href="game.html" class="floating-button" title="Go to Her Gallery">→</a>
+
+
+</body>
+</html>
+
+
+

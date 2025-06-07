@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Guess The Memory</title>
+  <link rel="stylesheet" href="game.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <div class="background"></div>
+<div class="background-overlay"></div>
+<div class="stars" id="stars"></div>
+  <h2 id="game-title">Game Timeeeeeee 🎮</h2>
+
+  <div id="intro-messages">
+    <p class="message">Just a Quick Refreshment</p>
+    <p class="message">This isn’t a test or quiz for you.</p>
+    <p class="message">It’s just something to refresh our memories and conversations.</p>
+    <p class="message">About you, me, and us. I might even be wrong myself with the answers.So dont worry</p>
+    <p class="message">Ready to begin?</p>
+    <button class="start-btn" onclick="startGame()">Let’s Begin</button>
+  </div>
+
+  <h1 class="memory-title">Guess the Memory 💭</h1>
+
+  <div class="question-card">
+    <p class="question-text">When did we first talk?</p>
+    <div class="options">
+      <button class="option-btn" onclick="showFeedback(this, true)">2nd March</button>
+      <button class="option-btn" onclick="showFeedback(this, false)">4th March</button>
+      <button class="option-btn" onclick="showFeedback(this, false)">8th March</button>
+    </div>
+    <div id="feedback" class="feedback"></div>
+  </div>
+  <div id="next-section" class="next-container">
+  <button class="next-btn" onclick="goToNextPage()">Next →</button>
+</div>
+
+  <script>
+    // Star Animation
+    const starContainer = document.getElementById('stars');
+    function createStar() {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.left = `${Math.random() * 100}vw`;
+      star.style.top = `-${Math.random() * 20}vh`;
+      star.style.animationDelay = `${Math.random() * 5}s`;
+      star.style.animationDuration = `${4 + Math.random() * 4}s`;
+      starContainer.appendChild(star);
+      setTimeout(() => star.remove(), 8000);
+    }
+    for (let i = 0; i < 100; i++) createStar();
+    setInterval(createStar, 200);
+
+    // Questions Data
+    const questions = [
+      {
+        question: "Our First Conversation ?",
+        options: ["2nd March", "4th March", "8th March", "12th March"],
+        correctAnswer: "4th March"
+      },
+      {
+        question: "My favourite game?",
+        options: ["Basketball", "Cricket", "Football","Mobile Games"],
+        correctAnswer: "Football"
+      },
+      {
+        question: "Your Fav Sweet?",
+        options: ["Soan Papdi", "Barfi", "Rasmalai", "Laddu"],
+        correctAnswer: "Soan Papdi"
+      },
+      {
+        question: "Our First Meet?",
+        options: ["May 29", "May 28", "May 26", "May 30"],
+        correctAnswer: "May 29"
+      },
+      {
+        question: "A Film we watched Together?",
+        options: ["Haseena Dil Ruba", "Chennai Express", "Court", "Badlapur"],
+        correctAnswer: "Badlapur"
+      },
+      {
+        question: "My favourite Football Player?",
+        options: ["Lionel Messi", "Neymar Jr", "CR7", "Ronaldinho"],
+        correctAnswer: "Neymar Jr"
+      },
+      {
+        question: "Our First Video Call?",
+        options: ["11th March", "7th March", "9th March", "5th March"],
+        correctAnswer: "11th March"
+      },
+      {
+        question: "MY FAV THING ABOUT YOUUU?",
+        options: [" YOUR VOICEEE", "YOUR SMILEEE", "YOUR STYLE", "ALL OF ITTT"],
+        correctAnswer: "ALL OF ITTT"
+      }
+    ];
+      const reflectionQuestions = [
+  "Things We should do on our next date?",
+  "Movies we should watch together?",
+  "Things I have missed about you and should definately know ?",
+  "Anything you would like to sayyyy?",
+];
+
+    let currentIndex = 0;
+
+    function loadQuestion() {
+      const q = questions[currentIndex];
+      document.querySelector(".question-text").textContent = q.question;
+
+      const optionsContainer = document.querySelector(".options");
+      optionsContainer.innerHTML = "";
+
+      q.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.classList.add("option-btn");
+        btn.textContent = option;
+        btn.onclick = () => showFeedback(btn, option === q.correctAnswer);
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    function showFeedback(button, isCorrect) {
+      const feedback = document.getElementById("feedback");
+      feedback.className = "feedback " + (isCorrect ? "correct" : "wrong");
+      feedback.innerText = isCorrect
+        ? "You remembered right! 💖"
+        : "Oops, not quite! But cute try 😊";
+
+        const card = document.querySelector(".question-card");
+
+      setTimeout(() => {
+        feedback.textContent = "";
+        card.classList.add("fade-out");
+
+        setTimeout(() => {
+      card.classList.remove("fade-out");
+
+        currentIndex++;
+        if (currentIndex < questions.length) {
+          loadQuestion();
+          card.classList.add("fade-in");
+
+          setTimeout(() => card.classList.remove("fade-in"), 500);
+        } else {
+          card.innerHTML = "<p class='final-message'>That’s all! Hope it was fun 💫</p>";
+          setTimeout(() => {
+    showReflectionQuestions();
+  }, 1500);
+      }
+    }, 500); // wait for fade-out to finish
+  }, 2000); // feedback duration
+}
+    // Intro Message Sequence
+    const messages = document.querySelectorAll("#intro-messages .message");
+    const startBtn = document.querySelector(".start-btn");
+    const title = document.querySelector(".memory-title");
+    const card = document.querySelector(".question-card");
+
+    let index = 0;
+    function showNextMessage() {
+      if (index < messages.length) {
+        messages[index].style.display = "block";
+        messages[index].style.animation = "fadeIn 1s ease forwards";
+        index++;
+        setTimeout(showNextMessage, 2500);
+      } else {
+        startBtn.classList.add("show");
+      }
+    }
+
+    function startGame() {
+      document.getElementById("intro-messages").style.display = "none";
+      title.style.display = "block";
+      card.style.display = "block";
+      loadQuestion();
+    }
+
+    window.onload = showNextMessage;
+
+    function showReflectionQuestions() {
+  const card = document.querySelector(".question-card");
+  card.innerHTML = "<h3 class='reflection-title'>Text Area</h3>";
+
+  reflectionQuestions.forEach((q, index) => {
+    const container = document.createElement("div");
+    container.className = "reflection-block";
+
+    const label = document.createElement("label");
+    label.textContent = `${index + 1}. ${q}`;
+    label.className = "reflection-question";
+
+    const textarea = document.createElement("textarea");
+    textarea.placeholder = "Type your thoughts here...";
+    textarea.className = "reflection-textarea";
+    textarea.dataset.qid = index;
+
+    // Load saved answer (if any)
+    const savedAnswer = localStorage.getItem(`memory-answer-${index}`);
+    if (savedAnswer) textarea.value = savedAnswer;
+
+    // Save on typing
+    textarea.addEventListener("input", () => {
+      localStorage.setItem(`memory-answer-${index}`, textarea.value);
+    });
+
+
+    container.appendChild(label);
+    container.appendChild(textarea);
+    card.appendChild(container);
+  });
+
+  // Optional: Add a cute closing message or submit button
+  const submit = document.createElement("button");
+submit.textContent = "Submit";
+submit.className = "submit-reflection";
+submit.onclick = () => {
+  const answers = document.querySelectorAll(".reflection-textarea");
+  let hasAnswer = false;
+
+  answers.forEach((textarea) => {
+    if (textarea.value.trim() !== "") {
+      hasAnswer = true;
+      localStorage.setItem(`memory-answer-${textarea.dataset.qid}`, textarea.value);
+    }
+  });
+
+  if (hasAnswer) {
+    alert("Your answers were saved! ❤️ (only visible to you)");
+    
+    // ✅ Make sure the next-section is revealed
+    const nextSection = document.getElementById("next-section");
+    nextSection.classList.add("show");
+    nextSection.scrollIntoView({ behavior: "smooth" }); // optional smooth scroll
+  } else {
+    alert("Please write something before submitting 😊");
+  }
+};
+
+card.appendChild(submit);
+}
+function submitReflection() {
+  const answer = document.getElementById("user-reflection").value.trim();
+  if (answer) {
+    localStorage.setItem("reflectionAnswer", answer);
+    alert("Thank you for sharing 💖");
+    document.getElementById("next-section").style.display = "block"; // Show Next button now
+  } else {
+    alert("Please write something before submitting 😊");
+  }
+  document.getElementById("next-section").classList.add("show");
+
+}
+
+function goToNextPage() {
+  window.location.href = "confession.html"; // Replace with your actual page
+}
+  </script>
+
+</body>
+</html>

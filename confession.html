@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>A Letter From Me to You</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="letter.css">
+</head>
+<body>
+  <div class="fade-message" id="fade-message">
+  <pre>Open this whenever you are ready to step up things...</pre>
+   Just know — before you open this, I just want to say — there’s no rush and no pressure at all. .
+.❤️
+</div>
+<div class="photo-bg">
+  <img src="./zenishaaa/zen1.jpeg" alt="Her Photo 1" class="bg-photo">
+  <img src="./zenishaaa/zen2.jpeg" alt="Her Photo 2" class="bg-photo">
+  <img src="./zenishaaa/zen3.jpeg" alt="Her Photo 3" class="bg-photo">
+  <img src="./zenishaaa/zen4.jpeg" alt="Her Photo 3" class="bg-photo">
+  <img src="./zenishaaa/zen5.jpeg" alt="Her Photo 3" class="bg-photo">
+  <img src="./zenishaaa/zen6.jpeg" alt="Her Photo 3" class="bg-photo">
+  <img src="./zenishaaa/zen7.jpeg" alt="Her Photo 3" class="bg-photo">
+  <img src="./zenishaaa/zen8.jpeg" alt="Her Photo 3" class="bg-photo">
+  <img src="./zenishaaa/zen9.jpeg" alt="Her Photo 3" class="bg-photo">
+  <img src="./zenishaaa/zen10.jpeg" alt="Her Photo 3" class="bg-photo">
+  <img src="./zenishaaa/zen11.jpeg" alt="Her Photo 3" class="bg-photo">
+  <img src="./zenishaaa/zen12.jpeg" alt="Her Photo 3" class="bg-photo">
+  <img src="./zenishaaa/zen13.jpeg" alt="Her Photo 3" class="bg-photo">
+  <img src="./zenishaaa/zen14.jpeg" alt="Her Photo 3" class="bg-photo">
+</div>
+
+<div class="container">
+    <div id="envelope" class="envelope" onclick="openEnvelope()">
+      <div class="flap"></div>
+      <div class="front"></div>
+      <div class="letter-paper">
+        <div class="letter-message">
+  <div class="intro">A letter from my heart...</div>
+  <div class="click-text">Click to Open</div>
+</div>
+      </div>
+    </div>
+<nav id="nav-bar" class="nav-links">
+  <a href="index.html">Home</a>
+  <a href="favorites.html">Favorites</a>
+  <a href="game.html">Game</a>
+  <a href="confession.html">Letter</a>
+</nav>
+
+    <div class="letter-content" id="letter-content">
+      <h1>To You,</h1>
+      <div id="typed-letter" class="letter-body"></div>
+      <p class="signature"><br><span class="name">[Sumit Kunwar]</span></p>
+     <!--   <div class="reply-box" id="reply-box" style="display: none;">
+  <label for="her-reply">Your thoughts, if you feel like sharing:</label>
+  <textarea id="her-reply" placeholder="Type your message here..."></textarea>
+  <button onclick="sendReply()">Send</button>
+</div>-->
+<form id="reply-form" action="https://formsubmit.co/warriorgaming1318@gmail.com" method="POST" class="reply-form" style="display: none;">
+  <textarea name="message" placeholder="Your reply here..." required></textarea>
+  <input type="hidden" name="_subject" value="You got a reply to your letter!">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="confession.html">
+  <button type="submit">Send </button>
+</form>
+
+    </div>
+  </div>
+
+  <script>
+ window.onload = function (){
+for (let i = 0; i < 20; i++) {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+      document.body.appendChild(heart);
+    }
+  };
+    const letterText = `
+I’ve been thinking about writing this for a while now — but i was waiting for the perfect time, but  I dont want to keep this foreever in my heart. I want to be honest with how I feel.
+The truth is... I genuinely care about you. A lot.
+
+I love talking to you. Every conversation we share makes my day a little brighter. I could listen to your voice for hours — it's like a song I never get tired of.
+Whenever you send your pictures, I melt a little inside. You’re effortlessly beautiful — like a soft sunset or a quiet morning that makes you pause and just feel.
+
+Even though miles  between us, my heart feels close whenever you share your wday with me. I love the way you explain things, all the little details.
+If I could, I’d bottle those moments. 
+
+I’m not writing this to pressurize you with it. I just needed to say it — because it’s real.
+You’ve made a place in my heart, and no matter what you feel, I’ll always be greatful to have you in my life.
+`;
+
+let i = 0;
+
+function typeLetter() {
+  const el = document.getElementById("typed-letter");
+  if (i < letterText.length) {
+    el.innerHTML += letterText.charAt(i);
+    i++;
+    setTimeout(typeLetter, 45);
+  } else {
+    // Show the reply textarea once typing finishes
+    const replyForm = document.getElementById("reply-form");
+replyForm.style.display = "block";
+replyForm.classList.add("fade-in");
+  }
+}
+function openEnvelope() {
+      const envelope = document.getElementById("envelope");
+      envelope.classList.add("open");
+
+      // Hide the fade message
+  document.getElementById("fade-message").style.display = "none";
+
+      setTimeout(() => {
+    envelope.style.display = "none";
+    document.getElementById("letter-content").style.display = "block";
+    document.getElementById("nav-bar").style.display = "flex"; // Show nav
+    typeLetter();
+  }, 1000); // wait for flap animation to complete
+}
+
+
+  </script>
+</body>
+</html>
+
+
+

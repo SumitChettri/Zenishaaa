@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+}
+
+body {
+  background-color: #fff8f0;
+  overflow: hidden;
+}
+
+.header {
+  position: relative;
+  height: 100vh;
+  background: url('Beautiful-pink-rosebackgrounds-pictures.jpg') no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 230, 236, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 2;
+}
+
+.text-box {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 20px;
+}
+
+.text-box h1 {
+  font-size: 130px;
+  color: #C94C4C;
+  font-family: 'Dancing Script', cursive;
+  margin-bottom: 20px;
+}
+
+.text-box p {
+    font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 40px;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.hero-btn {
+  padding: 14px 40px;
+  font-size: 15px;
+  background: #f4c2c2;
+  color: rgb(57, 3, 3);
+  border: none;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.hero-btn:hover {
+  background-color: #e27d7d;
+  transform: scale(1.05);
+  color: #fff;
+}
+.sakura {
+  position: fixed;
+  top: -10px;
+  width: 15px;
+  height: 15px;
+  background: pink;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(45deg);
+  opacity: 0.7;
+  animation: fall 8s linear infinite;
+  z-index: 2;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
+.polaroid-frame {
+  position: absolute;
+  width: 160px;
+  height: 220px;
+  padding: 10px;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transform: rotate(-5deg);
+  animation: float 8s ease-in-out infinite;
+  border: 1px solid #ddd;
+  z-index:3 ;
+}
+.polaroid-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-bottom: 1px solid #ccc;
+  image-rendering: auto;
+}
+@keyframes float {
+  0% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-10px) rotate(-3deg); }
+  100% { transform: translateY(0) rotate(-5deg); }
+}
