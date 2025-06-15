@@ -165,4 +165,62 @@ body {
   background-color: #a6113a;
 }
 
+@media (max-width: 768px) {
+  body {
+    height: auto;
+    padding: 20px;
+    overflow-x: hidden;
+  }
+
+  .top-heading {
+    font-size: 2.2rem;
+    margin-top: 40px;
+    padding-top: 20px;
+  }
+
+  .center-content {
+    height: auto;
+    padding: 20px;
+    transform: none;
+  }
+
+  .center-content p {
+    font-size: 1rem;
+    line-height: 1.5;
+    transform: none;
+    max-width: 90%;
+    margin: 0 auto 20px auto;
+  }
+
+  #reveal {
+    font-size: 1.1rem;
+    padding: 0 15px;
+    margin-top: 20px;
+  }
+
+  #final-message {
+    font-size: 1rem;
+    padding: 0 15px;
+    margin-top: 15px;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+
+  #audioButton {
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    font-size: 0.75rem;
+  }
+
+  #nextButton {
+    bottom: 20px;
+    right: 20px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}
 

@@ -17,6 +17,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-size: cover;
+  background-position: center center;
 }
 
 .overlay {
@@ -37,7 +39,7 @@ body {
 }
 
 .text-box h1 {
-  font-size: 130px;
+  font-size: 10vw;
   color: #C94C4C;
   font-family: 'Dancing Script', cursive;
   margin-bottom: 20px;
@@ -113,4 +115,73 @@ body {
   0% { transform: translateY(0) rotate(-5deg); }
   50% { transform: translateY(-10px) rotate(-3deg); }
   100% { transform: translateY(0) rotate(-5deg); }
+}
+
+@media (max-width: 768px) {
+  .text-box h1 {
+    font-size: 50px; /* Smaller title for mobile */
+  }
+
+  .text-box p {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+
+  .hero-btn {
+    padding: 10px 24px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .text-box h1 {
+    font-size: 36px;
+  }
+
+  .text-box p {
+    font-size: 13px;
+  }
+
+  .hero-btn {
+    padding: 8px 20px;
+    font-size: 13px;
+  }
+
+  .polaroid-frame {
+    width: 100px;
+    height: 150px;
+  }
+  .frame-1 {
+    top: 270px !important;
+    left: 20px !important;
+    transform: rotate(10deg) !important;
+  }/* frame-3 */
+  .frame-2 {
+    top: 570px !important;
+    left: 290px !important;
+    transform: rotate(-10deg) !important;
+  }/* frame-6 */
+  .frame-3 {
+    top: 60px !important;
+    left: 290px !important;
+    transform: rotate(15deg) !important;
+  }/* frame-2 */
+
+  .frame-4 {
+    top: 60px !important;
+    left: 25px !important;
+    transform: rotate(15deg) !important;
+  }  /* frame-1 */
+
+ .frame-5 {
+    top: 570px !important;
+    left: 30px !important;
+    transform: rotate(10deg) !important;
+  } /* frame-5 */
+  .frame-6 {
+    top: 270px !important;
+    left: 290px !important;
+    transform: rotate(-10deg) !important;
+  } /* frame-4 */
+  
 }

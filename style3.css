@@ -207,3 +207,7 @@ html,body {
   background-color: #a61e4d;
   transform: scale(1.1);
 }
+.inner-box.tapped {
+  transform: scale(1.40);
+  background-color: #f098b8;
+}

@@ -391,3 +391,58 @@ button:hover {
     transform: translateY(0);
   }
 }
+button.tapped,
+.reply-form button.tapped,
+.nav-links a.tapped,
+.inner-box.tapped {
+  background-color: #d1a982 !important;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .container {
+    min-width: auto;
+    width: 100%;
+    padding: 20px 10px;
+  }
+
+  .envelope {
+    width: 90%;
+    height: auto;
+  }
+  .flap {
+    top: 200px;
+     padding-top: 220px;
+  }
+  .letter-paper {
+    padding: 15px;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+  }
+
+  .letter-message
+   {
+    font-size: 1.2em;
+    padding-top: 600px;
+  }
+
+  .fade-message {
+    padding-top: 100px;
+    padding-left: 50px;
+    font-size: 1.2em;
+  }
+
+  .nav-links {
+    position: static;
+    margin: 20px auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .bg-photo {
+    width: 120px;
+    height: 120px;
+  }
+}
