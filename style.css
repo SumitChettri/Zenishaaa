@@ -131,6 +131,40 @@ body {
     padding: 10px 24px;
     font-size: 14px;
   }
+  .frame-1 {
+    top: 380px !important;
+    left: 40px !important;
+    transform: rotate(-10deg) !important;
+  }/* frame-3 */
+  .frame-2 {
+    top: 530px !important;
+    left: 240px !important;
+    transform: rotate(-10deg) !important;
+  }/* frame-6 */
+  .frame-3 {
+    top: 110px !important;
+    left: 220px !important;
+    transform: rotate(-15deg) !important;
+  }/* frame-2 */
+
+  .frame-4 {
+    top: 110px !important;
+    left: 35px !important;
+    transform: rotate(15deg) !important;
+  }  /* frame-1 */
+
+ 
+  .frame-5 {
+    top: 380px !important;
+    left: 250px !important;
+    transform: rotate(10deg) !important;
+  } /* frame-4 */
+
+  .frame-6 {
+    top: 530px !important;
+    left: 40px !important;
+    transform: rotate(10deg) !important;
+  } /* frame-5 */
 }
 
 @media (max-width: 480px) {
@@ -149,31 +183,9 @@ body {
 
   .polaroid-frame {
     width: 100px;
-    height: 150px;
+    height: 130px;
   }
   
-  .frame-2 {
-    top: 570px !important;
-    left: 290px !important;
-    transform: rotate(-10deg) !important;
-  }/* frame-6 */
-  .frame-3 {
-    top: 30px !important;
-    left: 260px !important;
-    transform: rotate(15deg) !important;
-  }/* frame-2 */
-
-  .frame-4 {
-    top: 30px !important;
-    left: 35px !important;
-    transform: rotate(15deg) !important;
-  }  /* frame-1 */
-
- 
-  .frame-6 {
-    top: 270px !important;
-    left: 290px !important;
-    transform: rotate(-10deg) !important;
-  } /* frame-4 */
+  
   
 }
