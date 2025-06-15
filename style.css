@@ -151,11 +151,7 @@ body {
     width: 100px;
     height: 150px;
   }
-  .frame-1 {
-    top: 210px !important;
-    left: 20px !important;
-    transform: rotate(10deg) !important;
-  }/* frame-3 */
+  
   .frame-2 {
     top: 570px !important;
     left: 290px !important;
@@ -173,11 +169,7 @@ body {
     transform: rotate(15deg) !important;
   }  /* frame-1 */
 
- .frame-5 {
-    top: 210px !important;
-    left: 30px !important;
-    transform: rotate(10deg) !important;
-  } /* frame-5 */
+ 
   .frame-6 {
     top: 270px !important;
     left: 290px !important;
