@@ -359,20 +359,19 @@ Dear Zenisha ❤️
 
 
 I don't know if words are enough
-to explain how special you are.
+to explain how special you are to me.
+From our first conversation to the moments we shared, every memory with you has become something I will never forget and truly cherish.
 
-
-But I wanted you to know that
-your smile, your energy, and the way
+Your smile, your energy, and the way
 you make people around you happy
 is something truly beautiful.
-
-
+I hope this year brings you endless happiness, success, and all the beautiful things you deserve.
+I’ll always be thankful for the memories we’ve created and the moments we’ve shared and hope we could continue it for life. I hope your birthday is as wonderful and beautiful as you are
 Thank you for being a wonderful
 part of my life.
 
 
-Happy Birthday ❤️
+HAPPYYYYYY BIRTHDAYYYY ZENISHAAAAAA❤️
 
 
 `;
