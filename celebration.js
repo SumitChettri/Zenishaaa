@@ -538,7 +538,7 @@ function continueJourney() {
     setTimeout(() => {
 
         window.location.href =
-            "index.html";
+            "landing1.html";
 
     }, 2000);
 
@@ -557,7 +557,7 @@ function stayHere() {
     setTimeout(() => {
 
         window.location.href =
-            "landing.html";
+            "index.html";
 
     }, 2000);
 
