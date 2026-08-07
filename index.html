@@ -1,53 +1,1137 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>For You</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Quicksand&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <section class="header">
-    <div class="overlay"></div>
-    <div class="text-box">
-      <h1>For You</h1>
-      <p>
-        I don’t know where to begin,<br/>
-         So this is my way of turning my thoughts and emotions.<br/>
-        A little journey of my thoughts, just for you.
-      </p>
-      <a href="start.html" class="hero-btn">Let’s Begin</a>
-    </div>
-      <div class="polaroid-frame" style="top: 40%; left: 20%;">
-  <img src="zenishaaa/zen11.jpeg" alt="Memory 1">
-</div>
-<div class="polaroid-frame" style="top: 60%; left: 85%;">
-  <img src="zenishaaa/zen14.jpeg" alt="Memory 2">
-</div>
-<div class="polaroid-frame" style="top: 13%; left: 6%; transform: rotate(-5deg); animation-delay: 0s;">
-  <img src="zenishaaa/zen4.jpeg" alt="Memory 1" />
-</div>
-<div class="polaroid-frame" style="top: 10%; left: 85%; transform: rotate(3deg); animation-delay: 2s;">
-  <img src="zenishaaa/zen7.jpeg" alt="Memory 2" />
-</div>
-<div class="polaroid-frame" style="top: 30%; left: 70%; transform: rotate(-8deg); animation-delay: 4s;">
-  <img src="zenishaaa/zen8.jpeg" alt="Memory 3" />
-</div>
-<div class="polaroid-frame" style="top: 60%; left: 6%; transform: rotate(6deg); animation-delay: 1s;">
-  <img src="zenishaaa/zen6.jpeg" alt="Memory 4" />
-</div>
-  </section>
-  <script>
-  for (let i = 0; i < 30; i++) {
-    const petal = document.createElement('div');
-    petal.className = 'sakura';
-    petal.style.left = Math.random() * 100 + 'vw';
-    petal.style.animationDuration = (5 + Math.random() * 5) + 's';
-    petal.style.opacity = Math.random();
-    document.body.appendChild(petal);
-  }
-</script>
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Memory Lens</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Be+Vietnam+Pro:wght@400;600;700&family=Material+Symbols+Outlined&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            background: #F4C2C2;
+            overflow-x: hidden;
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+
+        /* Floating Hearts */
+        .hearts {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -40px;
+            color: #ff4d88;
+            opacity: .4;
+            animation: floatHeart linear infinite;
+        }
+
+        @keyframes floatHeart {
+
+            0% {
+                transform: translateY(0) scale(.7);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: .5;
+            }
+
+            100% {
+                transform: translateY(-120vh) translateX(40px) scale(1.2);
+                opacity: 0;
+            }
+
+        }
+
+
+        .login-card {
+
+            position: relative;
+
+            padding: 20px;
+
+            border-radius: 40px;
+
+            background: rgba(255, 255, 255, .18);
+
+            backdrop-filter: blur(2px);
+
+            -webkit-backdrop-filter: blur(2px);
+
+            border: 1px solid rgba(255, 255, 255, .35);
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, .15),
+                inset 0 1px 1px rgba(255, 255, 255, .4);
+
+            z-index: 2;
+
+        }
+
+
+        .login-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 12px;
+
+            border-radius: 30px;
+
+            border: 1px solid rgba(255, 255, 255, .25);
+
+            pointer-events: none;
+
+        }
+
+        .login-card {
+
+            box-shadow:
+
+                0 25px 70px rgba(194, 24, 91, .15),
+
+                0 0 80px rgba(255, 255, 255, .3),
+
+                inset 0 1px 2px rgba(255, 255, 255, .5);
+
+        }
+
+        .wrapper {
+
+            padding: 20px;
+
+        }
+
+
+        .photo-background {
+
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            overflow: hidden;
+
+        }
+
+        .photo-background img {
+
+            position: absolute;
+            width: 200px;
+            border-radius: 15px;
+            opacity: 0.2;
+            filter: blur(1px);
+            object-fit: cover;
+            transition: .5s;
+
+        }
+
+        .photo-background img:nth-child(1) {
+            top: 5%;
+            left: 5%;
+            transform: rotate(15deg);
+        }
+
+        .photo-background img:nth-child(2) {
+            top: 40%;
+            left: 12%;
+            transform: rotate(-10deg);
+        }
+
+        .photo-background img:nth-child(3) {
+            top: 72%;
+            left: 5%;
+            transform: rotate(12deg);
+        }
+
+        .photo-background img:nth-child(4) {
+            top: 5%;
+            right: 5%;
+            transform: rotate(-15deg);
+        }
+
+        .photo-background img:nth-child(5) {
+            top: 42%;
+            right: 12%;
+            transform: rotate(20deg);
+        }
+
+        .photo-background img:nth-child(6) {
+            bottom: 3%;
+            right: 5%;
+            transform: rotate(-12deg);
+        }
+
+        .photo-background img:nth-child(7) {
+            bottom: 5%;
+            left: 25%;
+            transform: rotate(-18deg);
+        }
+
+        .photo-background img:nth-child(8) {
+            top: 5%;
+            left: 42%;
+            transform: rotate(18deg);
+        }
+
+        .photo-background img:nth-child(9) {
+            bottom: 80%;
+            left: 25%;
+            transform: rotate(-12deg);
+        }
+
+        .photo-background img:nth-child(10) {
+            top: 15%;
+            left: 63%;
+            transform: rotate(14deg);
+        }
+
+        .photo-background img:nth-child(11) {
+            bottom: 10%;
+            right: 45%;
+            transform: rotate(0deg);
+        }
+
+        .photo-background img:nth-child(12) {
+            top: 80%;
+            right: 25%;
+            transform: rotate(8deg);
+        }
+
+
+
+.landing-watermark{
+
+    position:absolute;
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    text-align:center;
+
+    pointer-events:none;
+
+    user-select:none;
+
+    z-index:0;
+
+}
+
+.landing-watermark h1{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:170px;
+
+    letter-spacing:18px;
+
+    color:#ffffff;
+
+    opacity:.05;
+
+    margin:0;
+
+    text-transform:uppercase;
+
+}
+
+.landing-watermark p{
+
+    margin-top:-25px;
+
+    font-size:42px;
+
+    letter-spacing:8px;
+
+    color:#ffd6e8;
+
+    opacity:.08;
+
+}
+
+
+
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24;
+        }
+
+        .camera-body {
+            background: linear-gradient(145deg, #ff6b81, #d12d53);
+            border-radius: 30px;
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, .15),
+                inset 2px 2px 2px rgba(255, 255, 255, .4),
+                inset -4px -4px 8px rgba(0, 0, 0, .2);
+        }
+
+        .keypad-button {
+            background: rgba(255, 255, 255, .18);
+            border: 1px solid rgba(255, 255, 255, .35);
+            backdrop-filter: blur(10px);
+            transition: .25s;
+        }
+
+        .keypad-button:hover {
+
+            background: #991b1b !important;
+
+            transform: translateY(-4px) scale(1.05);
+
+            box-shadow: 0 10px 20px rgba(0, 0, 0, .25);
+
+            color: white;
+
+        }
+
+        .keypad-button:active {
+
+            transform: scale(.9);
+
+            background: #7f1d1d !important;
+
+        }
+
+        .camera-button {
+            background: white;
+            transition: .2s;
+        }
+
+        .camera-button:active {
+            transform: scale(.9);
+        }
+
+        .code-heart {
+            transition: .3s;
+        }
+
+        .viewfinder {
+            border: 12px solid white;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, .15);
+            transform: rotate(-2deg);
+        }
+
+        .photo-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent,
+                    rgba(0, 0, 0, .08));
+        }
+
+        .unlockMessage {
+            display: none;
+            position: absolute;
+            inset: 0;
+            background: white;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 100;
+        }
+
+        .unlockMessage h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #c2185b;
+        }
+
+        .unlockMessage p {
+            margin-top: 15px;
+            font-size: 1.1rem;
+        }
+
+        .background-heart {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1200px;
+            color: #ff0040;
+            opacity: .05;
+            pointer-events: none;
+            user-select: none;
+            z-index: 0;
+            animation: heartbeat 6s ease-in-out infinite;
+        }
+
+        .shake {
+            animation: shake .5s;
+        }
+
+        .flower-left {
+
+            position: fixed;
+            bottom: 0px;
+            left: -60px;
+            width: 220px;
+            z-index: 3;
+            transform: rotate(50deg);
+            opacity: 0.6;
+        }
+
+        .flower-right {
+
+            position: fixed;
+            bottom: -10px;
+            right: -60px;
+            width: 220px;
+            z-index: 3;
+            transform: rotate(-50deg);
+            opacity: 0.6;
+        }
+
+        .flower-top {
+
+            position: absolute;
+            top: -60px;
+            right: -55px;
+            width: 150px;
+            z-index: 20;
+
+        }
+
+        .loading-screen{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:#f8bfd0;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+flex-direction:column;
+
+opacity:0;
+
+visibility:hidden;
+
+transition:1.2s;
+
+z-index:99999;
+
+}
+
+.loading-screen.show{
+
+opacity:1;
+
+visibility:visible;
+
+}
+
+.loading-content{
+
+text-align:center;
+
+}
+
+.loading-content h2{
+
+font-size:38px;
+
+font-weight:bold;
+
+color:#b3124c;
+
+margin-top:20px;
+
+}
+
+.loading-content p{
+
+margin-top:10px;
+
+color:#7a2745;
+
+}
+
+.polaroid-loader{
+
+font-size:70px;
+
+animation:cameraBounce 1.2s infinite;
+
+}
+
+@keyframes cameraBounce{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-12px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+.loading-screen{
+
+position:fixed;
+inset:0;
+background:#f8bfd0;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+opacity:0;
+visibility:hidden;
+
+transition:1s;
+
+z-index:9999;
+
+}
+
+.loading-screen.show{
+
+opacity:1;
+visibility:visible;
+
+}
+
+.loading-content{
+
+text-align:center;
+
+animation:fadeUp .8s;
+
+}
+
+.loading-title{
+
+font-size:42px;
+font-weight:800;
+color:#c2185b;
+margin-top:15px;
+
+}
+
+.loading-subtitle{
+
+font-size:24px;
+font-weight:600;
+color:#8f1345;
+margin-top:5px;
+
+}
+
+.loading-photo{
+
+width:220px;
+height:280px;
+
+object-fit:cover;
+
+border:12px solid white;
+
+box-shadow:0 15px 35px rgba(0,0,0,.2);
+
+margin:25px auto;
+
+transform:rotate(-4deg);
+
+animation:photoFloat 3s ease-in-out infinite;
+
+}
+
+.loading-text{
+
+font-size:18px;
+color:#7c3651;
+
+margin-bottom:25px;
+
+}
+
+.cat-gif{
+
+width:180px;
+
+margin:auto;
+
+}
+
+.loading-bar{
+
+width:300px;
+
+height:10px;
+
+background:white;
+
+border-radius:50px;
+
+overflow:hidden;
+
+margin:auto;
+
+}
+
+.loading-progress{
+
+height:100%;
+
+width:0;
+
+background:#d91d5c;
+
+animation:loading 4s linear forwards;
+
+}
+
+@keyframes loading{
+
+to{
+
+width:100%;
+
+}
+
+}
+
+@keyframes photoFloat{
+
+0%,100%{
+
+transform:rotate(-4deg) translateY(0);
+
+}
+
+50%{
+
+transform:rotate(-2deg) translateY(-8px);
+
+}
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+transform:translateY(30px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+        @keyframes shake {
+
+            0% {
+                transform: translateX(0);
+            }
+
+            20% {
+                transform: translateX(-10px);
+            }
+
+            40% {
+                transform: translateX(10px);
+            }
+
+            60% {
+                transform: translateX(-8px);
+            }
+
+            80% {
+                transform: translateX(8px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+
+        }
+
+        .unlock {
+            animation: unlock .8s ease;
+        }
+
+        @keyframes unlock {
+
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.06);
+            }
+        }
+
+        @keyframes float {
+
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+
+        }
+
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @media(max-width:768px) {
+
+            main {
+                padding: 30px 15px;
+            }
+
+            .wrapper {
+                flex-direction: column;
+                gap: 35px;
+            }
+
+            .camera-body {
+                width: 100% !important;
+                max-width: 360px;
+                height: auto !important;
+                padding: 18px;
+            }
+
+            .viewfinder {
+                width: 90%;
+                margin: auto;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="hearts"></div>
+    <main class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <div class="background-heart">❤</div>
+
+        <div class="photo-background">
+
+            <img src="./zen/zen15.jpeg">
+            <img src="./zen/zen16.jpeg">
+            <img src="./zen/zen17.jpeg">
+            <img src="./zen/zen18.jpeg">
+            <img src="./zen/zen23.jpeg">
+            <img src="./zen/zen20.jpeg">
+            <img src="./zen/zen21.jpeg">
+            <img src="./zen/zen27.jpeg">
+            <img src="./zen/zen19.jpeg">
+            <img src="./zen/zen24.jpeg">
+            <img src="./zen/zen25.jpeg">
+            <img src="./zen/zen26.jpeg">
+
+
+        </div>
+        <div class="landing-watermark">
+
+    <h1>ZENISHA</h1>
+
+    <p>Happy Birthday</p>
+
+</div>
+        <div class="login-card">
+            <div class="wrapper max-w-6xl w-full flex flex-col md:flex-row
+                    items-center justify-between gap-16 px-8
+                            relative top-[-140px]">
+
+                <div class="w-full md:w-1/2 flex justify-center">
+
+                    <div class="viewfinder bg-white p-4 relative w-[300px] right-[5px] top-[140px]">
+                        <img src="./zen/pink.png" class="flower-top">
+
+                        <img src="./zenishaaa/Zenisha-image12.jpeg" class="w-full aspect-[3/4] object-cover rounded">
+
+                        <div class="photo-overlay"></div>
+
+                        <div class="absolute top-2 left-2 border-l-2 border-t-2 border-white w-6 h-6"></div>
+
+                        <div class="absolute top-3 right-3 border-r-2 border-t-2 border-white w-6 h-6"></div>
+
+                        <div class="absolute bottom-2 left-2 border-l-2 border-b-2 border-white w-8 h-8"></div>
+
+                        <div class="absolute bottom-3 right-3 border-r-2 border-b-2 border-white w-8 h-8"></div>
+
+                    </div>
+
+                </div>
+
+                <div class="w-full md:w-1/2 flex justify-center">
+
+                    <div class="camera-body w-[270px] h-[450px] p-2 flex flex-col relative left-[10px] top-[140px]">
+
+                        <div class="flex justify-between mb-2">
+
+
+
+                        </div>
+
+                        <div class="flex-1 rounded-2xl p-4 flex flex-col items-center justify-center" style="
+     background-color:#8f1328;
+     background-image:
+     radial-gradient(#b92b3b 18%, transparent 18%),
+     radial-gradient(#b92b3b 18%, transparent 18%);
+     background-position:0 0,10px 10px;
+     background-size:10px 10px;">
+
+                            <!-- Title -->
+                            <h2 id="screenTitle" class="text-white   text-2xl font-bold mb-8 whitespace-nowrap">
+                                Enter Code
+                            </h2>
+
+                            <!-- Hearts -->
+                            <div class="flex gap-4 mb-10">
+
+                                <div
+                                    class="code-heart w-12 h-12 bg-white rounded-lg shadow flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-gray-200 text-4xl"
+                                        style="font-variation-settings:'FILL' 0">
+                                        favorite
+                                    </span>
+                                </div>
+
+                                <div
+                                    class="code-heart w-12 h-12 bg-white rounded-lg shadow flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-gray-200 text-4xl"
+                                        style="font-variation-settings:'FILL' 0">
+                                        favorite
+                                    </span>
+                                </div>
+
+                                <div
+                                    class="code-heart w-12 h-12 bg-white rounded-lg shadow flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-gray-200 text-4xl"
+                                        style="font-variation-settings:'FILL' 0">
+                                        favorite
+                                    </span>
+                                </div>
+
+                                <div
+                                    class="code-heart w-12 h-12 bg-white rounded-lg shadow flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-gray-200 text-4xl"
+                                        style="font-variation-settings:'FILL' 0">
+                                        favorite
+                                    </span>
+                                </div>
+
+                            </div>
+
+                            <!-- White Keypad Panel -->
+                            <div class="bg-white rounded-3xl p-6 shadow-lg border border-gray-200">
+
+                                <div class="grid grid-cols-3 gap-4">
+
+                                    <button
+                                        class="keypad-button w-19 h-18 rounded-2xl bg-red-700 text-white text-3xl font-bold shadow-md">1</button>
+                                    <button
+                                        class="keypad-button w-15 h-15 rounded-2xl bg-red-700 text-white text-3xl font-bold shadow-md">2</button>
+                                    <button
+                                        class="keypad-button w-15 h-15 rounded-2xl bg-red-700 text-white text-3xl font-bold shadow-md">3</button>
+
+                                    <button
+                                        class="keypad-button w-15 h-15 rounded-2xl bg-red-700 text-white text-3xl font-bold shadow-md">4</button>
+                                    <button
+                                        class="keypad-button w-15 h-15 rounded-2xl bg-red-700 text-white text-3xl font-bold shadow-md">5</button>
+                                    <button
+                                        class="keypad-button w-15 h-15 rounded-2xl bg-red-700 text-white text-3xl font-bold shadow-md">6</button>
+
+                                    <button
+                                        class="keypad-button w-15 h-15 rounded-2xl bg-red-700 text-white text-3xl font-bold shadow-md">7</button>
+                                    <button
+                                        class="keypad-button w-15 h-15 rounded-2xl bg-red-700 text-white text-3xl font-bold shadow-md">8</button>
+                                    <button
+                                        class="keypad-button w-15 h-15 rounded-2xl bg-red-700 text-white text-3xl font-bold shadow-md">9</button>
+
+                                    <button
+                                        class="keypad-button w-15 h-15 rounded-2xl bg-red-700 text-white text-3xl font-bold shadow-md"
+                                        disabled>.</button>
+                                    <button
+                                        class="keypad-button w-15 h-15 rounded-2xl bg-red-700 text-white text-3xl font-bold shadow-md">0</button>
+                                    <button
+                                        class="keypad-button w-15 h-15 rounded-2xl bg-red-700 text-white text-l font-bold shadow-md">DEL</button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <img src="./zen/bouquet.png" class="flower-left">
+        <img src="./zen/bouquet.png" class="flower-right">
+    </main>
+
+    <div id="loadingScreen" class="loading-screen">
+
+    <div class="loading-content">
+
+        <img src="./zen/scared-cat.gif" class="cat-gif">
+
+        <h2 class="loading-title">
+            OH MY GAWDDDD 😭💖
+        </h2>
+
+        <p class="loading-subtitle">
+            WHO IS THIS DIVA? ✨
+        </p>
+
+        <img src="./zen/zen22.jpeg" class="loading-photo">
+
+        <p class="loading-text">
+            Preparing your birthday surprise...
+        </p>
+
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+
+    </div>
+
+</div>
+    <script>
+        const PASSWORD = "0807";     // Your password
+
+        let entered = "";
+
+        const camera = document.querySelector(".camera-body");
+
+        const title = document.getElementById("screenTitle");
+
+        const hearts = document.querySelectorAll(".code-heart span");
+
+        const buttons = document.querySelectorAll(".keypad-button");
+
+        buttons.forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                const value = button.innerText;
+
+                if (value === "DEL") {
+
+                    if (entered.length > 0) {
+
+                        entered = entered.slice(0, -1);
+
+                        const heart = hearts[entered.length];
+
+                        heart.style.color = "#d1d5db";
+
+                        heart.style.fontVariationSettings = "'FILL' 0";
+
+                    }
+
+                    return;
+
+                }
+
+                if (entered.length == 4) return;
+
+                entered += value;
+
+                const heart = hearts[entered.length - 1];
+
+                heart.style.color = "#dc2626";
+
+                heart.style.fontVariationSettings = "'FILL' 1";
+
+                heart.animate([
+                    { transform: "scale(1)" },
+                    { transform: "scale(1.35)" },
+                    { transform: "scale(1)" }
+                ], { duration: 220 });
+
+                if (entered.length == 4) {
+
+                    setTimeout(checkPassword, 300);
+
+                }
+
+            });
+
+        });
+
+        function checkPassword() {
+
+            if (entered === PASSWORD) {
+
+                camera.classList.add("unlock");
+
+                title.innerHTML = "Unlocked ❤️";
+
+                setTimeout(showLoading, 1000);
+
+            }
+            else {
+
+                camera.classList.add("shake");
+
+                title.innerHTML = "Wrong Password";
+
+                setTimeout(() => {
+
+                    camera.classList.remove("shake");
+
+                    title.innerHTML = "Enter Code";
+
+                    entered = "";
+
+                    hearts.forEach(h => {
+
+                        h.style.color = "#d1d5db";
+
+                        h.style.fontVariationSettings = "'FILL' 0";
+
+                    });
+
+                }, 700);
+
+            }
+
+        }
+
+        const heartContainer = document.querySelector(".hearts");
+
+        function createHeart() {
+
+            const heart = document.createElement("div");
+
+            heart.className = "heart";
+
+            heart.innerHTML = "❤";
+
+            heart.style.left = Math.random() * 150 + "vw";
+
+            heart.style.fontSize = (15 + Math.random() * 20) + "px";
+
+            heart.style.animationDuration = (5 + Math.random() * 2) + "s";
+
+            heart.style.opacity = Math.random() * 0.5;
+
+            heartContainer.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 10000);
+
+        }
+
+        setInterval(createHeart, 300);
+
+        function showLoading(){
+
+    document.getElementById("loadingScreen").classList.add("show");
+
+    setTimeout(()=>{
+
+        window.location.href="birthday.html";
+
+    },4000);
+
+}
+
+window.addEventListener("pageshow", function (event) {
+
+    // Hide loading screen when returning with Back button
+    const loading = document.getElementById("loadingScreen");
+    if (loading) {
+        loading.classList.remove("show");
+    }
+
+    // Reset password
+    entered = "";
+
+    // Reset title
+    document.getElementById("screenTitle").innerHTML = "Enter Code";
+
+    // Reset hearts
+    document.querySelectorAll(".code-heart span").forEach(heart => {
+        heart.style.color = "#d1d5db";
+        heart.style.fontVariationSettings = "'FILL' 0";
+    });
+
+    // Remove animations
+    document.querySelector(".camera-body").classList.remove("unlock");
+    document.querySelector(".camera-body").classList.remove("shake");
+
+});
+
+
+    </script>
 </body>
+
 </html>
