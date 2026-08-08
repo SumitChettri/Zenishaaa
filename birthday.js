@@ -299,7 +299,7 @@ function showLines(){
         "1";
 
 
-    },25000);
+    },15000);
 
     setTimeout(()=>{
 
@@ -308,7 +308,7 @@ function showLines(){
         "celebration.html";
 
 
-    },30000);
+    },20000);
 
 }
 
